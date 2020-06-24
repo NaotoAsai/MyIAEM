@@ -11,6 +11,8 @@ window.Vue = require('vue');
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css'
+import router from './router'
+import store from './store'
 
 Vue.use(Vuetify);
 
@@ -42,5 +44,7 @@ const app = new Vue({
         icons: {
             iconfont: 'mdi'
         }
-    })
+    }),
+    router,
+    store
 });

@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer
-      v-model="drawer"
+      v-model="$store.state.drawer"
       app
     >
       <v-list dense>

@@ -4,17 +4,17 @@
       color="indigo"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="toggleSideMenu"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  data() {
-    return {
-      drawer: null
-    }
+  methods: {
+    ...mapActions(['toggleSideMenu'])
   }
 }
 </script>

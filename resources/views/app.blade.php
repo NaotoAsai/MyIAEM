@@ -18,7 +18,7 @@
         <v-app id="inspire">
           <Sidebar></Sidebar>
           <Navbar></Navbar>
-          <Home></Home>
+          <router-view></router-view>
           <vue-footer></vue-footer>
         </v-app>
     </div>
