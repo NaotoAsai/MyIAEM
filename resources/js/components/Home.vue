@@ -1,38 +1,32 @@
 <template>
-    <v-main>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
+<div>
+  <h2 style="text-align: center;">11月11日　月曜日</h2>
+  <v-tabs grow>
+    <v-tab @click="currentForm = 'ExpenditureForm'">
+      支出
+    </v-tab>
+    <v-tab @click="currentForm = 'IncomeForm'">
+      収入
+    </v-tab>
+  </v-tabs>
+
+  <component :is="currentForm"></component>
+</div>
 </template>
 
 <script>
+import IncomeForm from './IncomeForm.vue'
+import ExpenditureForm from './ExpenditureForm.vue'
+
 export default {
-  props: {
-    source: String
+  components: {
+    IncomeForm,
+    ExpenditureForm
+  },
+  data() {
+    return {
+      currentForm: 'ExpenditureForm'
+    }
   }
 }
 </script>

@@ -27,9 +27,9 @@ Vue.use(Vuetify);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('Home', require('./components/Home.vue').default);
 Vue.component('Navbar', require('./components/Navbar.vue').default);
-Vue.component('Sidebar', require('./components/Sidebar.vue').default);
+Vue.component('SideNav', require('./components/SideNav.vue').default);
+Vue.component('BottomNav', require('./components/BottomNav.vue').default);
 Vue.component('VueFooter', require('./components/VueFooter.vue').default);
 
 /**

@@ -10,15 +10,19 @@
 
       <title>{{ config('app.name', 'Laravel') }}</title>
 
-      <!-- Styles -->
       <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   </head>
   <body>
     <div id="app">
         <v-app id="inspire">
-          <Sidebar></Sidebar>
-          <Navbar></Navbar>
-          <router-view></router-view>
+          <side-nav></side-nav>
+          <navbar></navbar>
+          <v-main>
+            <v-container fluid>
+              <router-view></router-view>
+            </v-container>
+          </v-main>
+          <bottom-nav v-if="$vuetify.breakpoint.xs"></bottom-nav>
           <vue-footer></vue-footer>
         </v-app>
     </div>
