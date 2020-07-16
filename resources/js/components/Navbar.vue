@@ -4,10 +4,11 @@
       color="#CCCC99"
       dark
     >
-      <v-app-bar-nav-icon @click="toggleSideMenu"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="toggleSideMenu" v-if="isLogin"></v-app-bar-nav-icon>
       <v-toolbar-title>即add</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+
+      <v-toolbar-items v-if="isLogin">
       <v-menu offset-y>
         <template v-slot:activator="{on}">
         <v-btn v-on="on" text>
@@ -22,22 +23,27 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
-            <v-list-item-content>
+            <v-list-item-content @click="logout">
               <v-list-item-title>ログアウト</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-menu>
       </v-toolbar-items>
+
     </v-app-bar>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { mapActions } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters(['isLogin'])
+  },
   methods: {
-    ...mapActions(['toggleSideMenu'])
+    ...mapActions(['toggleSideMenu','logout'])
   }
 }
 </script>

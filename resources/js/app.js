@@ -13,8 +13,10 @@ import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css'
 import router from './router'
 import store from './store'
+import VueCookies from 'vue-cookies'
 
 Vue.use(Vuetify);
+Vue.use(VueCookies)
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,13 +40,15 @@ Vue.component('VueFooter', require('./components/VueFooter.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-    vuetify: new Vuetify({
-        icons: {
-            iconfont: 'mdi'
-        }
-    }),
-    router,
-    store
-});
+store.dispatch('autoLogin').then(() => {
+    const app = new Vue({
+        el: '#app',
+        vuetify: new Vuetify({
+            icons: {
+                iconfont: 'mdi'
+            }
+        }),
+        router,
+        store
+    });
+})

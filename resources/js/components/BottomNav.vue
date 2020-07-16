@@ -5,6 +5,7 @@
     height="90px"
     absolute
     :input-value= false
+    v-if="isLogin"
   >
     <v-btn @click="$router.push({ name: 'home' }).catch(() => {})">
       <span>追加する</span>
@@ -24,7 +25,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
   export default {
+    computed: {
+      ...mapGetters(['isLogin'])
+    },
     data () {
       return {
         activeBtn: 1,

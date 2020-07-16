@@ -6,10 +6,10 @@
             <h4>ユーザー登録</h4>
           </v-card-title>
           <v-form>
-          <v-text-field name="username" label="ユーザー名" v-model="user.name"></v-text-field>
-          <v-text-field name="email" label="メールアドレス" v-model="user.email"></v-text-field>
-          <v-text-field name="password" label="パスワード" type="password" v-model="user.password"></v-text-field>
-          <v-text-field name="password_confirmation" label="パスワード(確認)" type="password" v-model="user.password_confirmation"></v-text-field>
+          <v-text-field name="username" label="ユーザー名" v-model="authData.name"></v-text-field>
+          <v-text-field name="email" label="メールアドレス" v-model="authData.email"></v-text-field>
+          <v-text-field name="password" label="パスワード" type="password" v-model="authData.password"></v-text-field>
+          <v-text-field name="password_confirmation" label="パスワード(確認)" type="password" v-model="authData.password_confirmation"></v-text-field>
           <v-card-actions>
             <v-btn primary large block @click="register">登録</v-btn>
           </v-card-actions>
@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      user: {
+      authData: {
         name: '',
         email: '',
         password: '',
@@ -33,12 +33,7 @@ export default {
   },
   methods: {
     register() {
-      var url = '/api/register'
-      var params =  this.user
-      axios.post(
-          url,
-          params
-        )
+      this.$store.dispatch('register', this.authData)
     }
   }
 }
